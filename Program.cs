@@ -6,8 +6,8 @@ using RetroTrackRestNet.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var secretKey = "ClaveSecretaMuySeguraServiciosWebMIW"; //Misma clave que en SOAP que gestiona Usuarios
-var key = Encoding.ASCII.GetBytes(secretKey);
+var secretKeyBase64 = "uF0y3PI1N9e5B4FQWUKk5Jcz4OZK4IGrsQR0RpNpiX8=";
+var key = Convert.FromBase64String(secretKeyBase64);
 
 builder.Services.AddAuthentication(options =>
 {
