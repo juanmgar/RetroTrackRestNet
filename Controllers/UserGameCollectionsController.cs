@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RetroTrackRestNet.Data;
@@ -10,6 +6,7 @@ using RetroTrackRestNet.Model;
 
 namespace RetroTrackRestNet.Controllers
 {
+    [Authorize]
     [Route("/retrotrack/api/[controller]")]
     [ApiController]
     public class UserGameCollectionsController : ControllerBase
