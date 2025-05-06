@@ -98,6 +98,17 @@ namespace RetroTrackRestNet.Controllers
             return NoContent();
         }
 
+        // GET: api/UserGameCollections/user/{username}
+        [HttpGet("user/{username}")]
+        public async Task<ActionResult<IEnumerable<UserGameCollection>>> GetUserGameCollectionsByUser(string username)
+        {
+            var userCollections = await _context.UserGameCollections
+                                                .Where(c => c.User == username)
+                                                .ToListAsync();
+
+            return Ok(userCollections);
+        }
+
         private bool UserGameCollectionExists(int id)
         {
             return _context.UserGameCollections.Any(e => e.Id == id);
