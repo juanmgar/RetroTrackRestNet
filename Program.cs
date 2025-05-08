@@ -48,12 +48,20 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(9095, listenOptions =>
+    {
+        listenOptions.UseHttps("certs/devcert.pfx", "changeit");
+    });
+});
+
 var app = builder.Build();
 
 using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
 {
     var context = new DataContext();
-    //context.Database.EnsureDeleted(); //Delete ddbb always
+    context.Database.EnsureDeleted(); //Delete ddbb always
     context.Database.EnsureCreated();
 }
 
