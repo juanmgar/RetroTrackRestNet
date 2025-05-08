@@ -61,7 +61,7 @@ var app = builder.Build();
 using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
 {
     var context = new DataContext();
-    context.Database.EnsureDeleted(); //Delete ddbb always
+    //context.Database.EnsureDeleted(); //Delete ddbb always
     context.Database.EnsureCreated();
 }
 
