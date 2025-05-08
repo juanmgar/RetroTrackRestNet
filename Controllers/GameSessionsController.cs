@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RetroTrackRestNet.Data;
+using RetroTrackRestNet.DTO;
 using RetroTrackRestNet.Model;
 
 namespace RetroTrackRestNet.Controllers
 {
-    [Route("/retrotrack/api/[controller]")]
+    [Route("/rest/api/[controller]")]
     [ApiController]
     public class GameSessionsController : ControllerBase
     {
@@ -41,6 +37,20 @@ namespace RetroTrackRestNet.Controllers
 
             return gameSession;
         }
+
+        [HttpGet("{id}/screenshot")]
+        public async Task<IActionResult> GetGameSessionScreenshot(int id)
+        {
+            var session = await _context.GameSessions.FindAsync(id);
+
+            if (session == null || session.Screenshot == null)
+            {
+                return NotFound();
+            }
+
+            return File(session.Screenshot, "image/png");
+        }
+
 
         // PUT: api/GameSessions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -76,13 +86,33 @@ namespace RetroTrackRestNet.Controllers
         // POST: api/GameSessions
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<GameSession>> PostGameSession(GameSession gameSession)
+        public async Task<ActionResult<GameSession>> PostGameSession([FromForm] GameSessionDto dto)
         {
+            byte[] screenshotBytes = null;
+            if (dto.Screenshot != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    await dto.Screenshot.CopyToAsync(ms);
+                    screenshotBytes = ms.ToArray();
+                }
+            }
+
+            var gameSession = new GameSession
+            {
+                PlayerId = dto.PlayerId,
+                GameId = dto.GameId,
+                PlayedAt = dto.PlayedAt,
+                MinutesPlayed = dto.MinutesPlayed,
+                Screenshot = screenshotBytes
+            };
+
             _context.GameSessions.Add(gameSession);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetGameSession", new { id = gameSession.Id }, gameSession);
         }
+
 
         // DELETE: api/GameSessions/5
         [HttpDelete("{id}")]
