@@ -6,7 +6,7 @@ using RetroTrackRestNet.DTO;
 
 namespace RetroTrackRestNet.Controllers
 {
-    [Route("/retrotrack/api/[controller]")]
+    [Route("/rest/api/[controller]")]
     [ApiController]
     public class GameStatisticsController : ControllerBase
     {

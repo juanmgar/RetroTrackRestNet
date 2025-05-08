@@ -1,6 +1,6 @@
-@RetroTrackRestNet_HostAddress = http://localhost:5099
+@RetroTrackRestNet_HostAddress = https://localhost:9095
 
-GET {{RetroTrackRestNet_HostAddress}}/retrotrack/
+GET {{RetroTrackRestNet_HostAddress}}/rest/api/
 Accept: application/json
 
 ###

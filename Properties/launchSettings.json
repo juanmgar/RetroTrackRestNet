@@ -10,19 +10,19 @@
   },
   "profiles": {
     "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "retrotrack",
-      "applicationUrl": "http://localhost:5099",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "commandName": "Project",
+        "dotnetRunMessages": true,
+        "launchBrowser": true,
+        "launchUrl": "rest/api",
+        "applicationUrl": "https://localhost:9095;http://localhost:9094",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     },
     "IIS Express": {
         "commandName": "IISExpress",
         "launchBrowser": true,
-        "launchUrl": "retrotrack",
+        "launchUrl": "rest/api",
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
         }

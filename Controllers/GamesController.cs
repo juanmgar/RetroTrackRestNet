@@ -10,7 +10,7 @@ using RetroTrackRestNet.Model;
 
 namespace RetroTrackRestNet.Controllers
 {
-    [Route("/retrotrack/api/[controller]")]
+    [Route("/rest/api/[controller]")]
     [ApiController]
     public class GamesController : ControllerBase
     {
