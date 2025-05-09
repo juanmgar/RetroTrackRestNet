@@ -41,3 +41,15 @@ INSERT INTO UserGameCollections (Id, GameId, User) VALUES (18, 18, 'noelia');
 INSERT INTO UserGameCollections (Id, GameId, User) VALUES (19, 19, 'noelia');
 INSERT INTO UserGameCollections (Id, GameId, User) VALUES (20, 20, 'david');
 INSERT INTO UserGameCollections (Id, GameId, User) VALUES (21, 21, 'david');
+
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (1, 1, 'juanma', '2025-05-01 18:30:00', 45, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (2, 3, 'juanma', '2025-05-02 20:00:00', 30, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (3, 7, 'maria87', '2025-05-03 21:00:00', 60, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (4, 2, 'gamerpro', '2025-05-04 22:00:00', 90, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (5, 6, 'retrofan', '2025-05-05 23:00:00', 50, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (6, 9, 'retrofan', '2025-05-06 19:00:00', 40, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (7, 10, 'admin', '2025-05-07 18:30:00', 35, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (8, 11, 'admin', '2025-05-08 20:30:00', 55, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (9, 12, 'testuser', '2025-05-09 21:00:00', 70, NULL);
+INSERT INTO GameSessions (Id, GameId, PlayerId, PlayedAt, MinutesPlayed, Screenshot) VALUES (10, 14, 'sofia', '2025-05-10 22:30:00', 65, NULL);
+
