@@ -13,7 +13,7 @@ namespace RetroTrackRestNet.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserGameCollection>()
-                .HasOne<Game>()
+                .HasOne(ugc => ugc.Game)
                 .WithMany(g => g.UserGameCollections)
                 .HasForeignKey(ugc => ugc.GameId)
                 .OnDelete(DeleteBehavior.Cascade);
