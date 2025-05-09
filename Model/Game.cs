@@ -8,6 +8,6 @@
         public string Genre { get; set; }
         public string? Description { get; set; }
 
-        public ICollection<UserGameCollection> UserGameCollections { get; set; }
+        public ICollection<UserGameCollection>? UserGameCollections { get; set; }
     }
 }
