@@ -9,6 +9,7 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
+COPY Scripts ./Scripts
 COPY certs/devcert.pfx ./certs/devcert.pfx
 EXPOSE 9095
 ENV ASPNETCORE_URLS=https://+:9095
