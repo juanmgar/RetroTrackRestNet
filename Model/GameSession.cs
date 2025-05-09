@@ -7,7 +7,7 @@
         public String PlayerId { get; set; }
         public DateTime PlayedAt { get; set; }
         public int MinutesPlayed { get; set; }
-        public byte[] Screenshot { get; set; }
+        public byte[]? Screenshot { get; set; }
 
     }
 }
