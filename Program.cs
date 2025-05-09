@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RetroTrackRestNet.Data;
@@ -61,19 +62,20 @@ var app = builder.Build();
 using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
 {
     var context = new DataContext();
-    //context.Database.EnsureDeleted(); //Delete ddbb always
+    context.Database.EnsureDeleted(); //Delete ddbb always
     context.Database.EnsureCreated();
+
+    var script = File.ReadAllText("Scripts/init.sql");
+    context.Database.ExecuteSqlRaw(script);
 }
 
-if (app.Environment.IsDevelopment())
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Gestión de Juegos v1");
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Gestión de Juegos v1");
+});
+
 
 app.UseAuthentication();
 app.UseAuthorization();
