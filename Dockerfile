@@ -11,7 +11,7 @@ WORKDIR /app
 COPY --from=build /app/publish .
 COPY Scripts ./Scripts
 COPY certs/devcert.pfx ./certs/devcert.pfx
-COPY gamestats.db ./gamestats.db
+
 EXPOSE 9095
 ENV ASPNETCORE_URLS=https://+:9095
 
